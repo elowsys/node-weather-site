@@ -53,12 +53,12 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/api/weather', (req, res) => {
-    console.log(req.query.address);
+    //console.log(req.query.address);
     if (!req.query.address) {
         return res.send({
-            title: appName + ' - missing address',
+            title: appName + ' - missing location',
             name: author,
-            message: 'Please provide an address to fetch its weather forecast'
+            message: 'Please provide a location to fetch weather forecast for.'
         });
     }
     getCoords(req.query.address, (error, {
@@ -77,7 +77,7 @@ app.get('/api/weather', (req, res) => {
                 info,
                 showStyle
             }) => {
-                console.log('Getting weather forecast information: ');
+                console.log('Getting weather forecast information...');
                 if (err) {
                     //console.log(err.showStyle(err.info));
                     res.send({
@@ -105,9 +105,9 @@ app.get('/weather', (req, res) => {
     console.log(req.query.address);
     if (!req.query.address) {
         return res.render('404', {
-            title: appName + ' - missing address',
+            title: appName + ' - missing location',
             name: author,
-            message: 'Please provide an address to fetch its weather forecast'
+            message: 'Please provide a location to fetch weather forecast for.'
         });
     }
     getCoords(req.query.address, (error, {
@@ -117,7 +117,7 @@ app.get('/weather', (req, res) => {
         if (error) {
             //console.log(error.showStyle(error.info));
             return res.render('404', {
-                title: appName + ' - missing address',
+                title: appName + ' - missing location',
                 name: author,
                 message: error.info
             });
@@ -154,7 +154,7 @@ app.get('/weather', (req, res) => {
 //help specific route
 app.get('/help/*', (req, res) => {
     res.render('404', {
-        title: appName + ' - Content not found',
+        title: appName + ' - Oops...',
         name: author,
         message: 'Help article not found'
     });
@@ -162,7 +162,7 @@ app.get('/help/*', (req, res) => {
 
 app.get('*', (req, res) => {
     res.render('404', {
-        title: appName + ' - Content not found',
+        title: appName + ' - Oops...',
         name: author,
         message: 'Oops, page content appears to have gone walkies...'
     });
