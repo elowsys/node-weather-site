@@ -4,6 +4,8 @@ const search = document.querySelector('input');
 const errMsg = document.querySelector('#errMsg');
 const forecastMsg = document.querySelector('#forecastMsg');
 
+//const host = process.env.HOST || 'http://localhost:3000';
+
 errMsg.textContent = '';
 forecastMsg.textContent = '';
 
@@ -14,8 +16,8 @@ weatherFrm.addEventListener('submit', (e) => {
 
     const location = search.value;
     console.log(location);
-    const endPoint = 'http://localhost:3000/weather?address=' + location;
-    const apiEndPoint = 'http://localhost:3000/api/weather?address=' + location;
+    const endPoint = '/weather?address=' + location;
+    const apiEndPoint = '/api/weather?address=' + location;
     fetch(apiEndPoint)
         .then((response) => {
             response.json().then(data => {
