@@ -37,5 +37,6 @@ weatherFrm.addEventListener('submit', (e) => {
                 }
             });
         });
-    window.location.href = endPoint;
+    //uncomment to redirect to weather route
+    //window.location.href = endPoint;
 });
