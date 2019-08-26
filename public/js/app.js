@@ -15,7 +15,7 @@ weatherFrm.addEventListener('submit', (e) => {
     forecastMsg.textContent = 'Loading...';
 
     const location = search.value;
-    console.log(location);
+    //console.log(location);
     const endPoint = '/weather?address=' + location;
     const apiEndPoint = '/api/weather?address=' + location;
     fetch(apiEndPoint)
