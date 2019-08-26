@@ -10,7 +10,12 @@
 <body>
     <div class="main-content">
         {{>header}}
-        <p class="text-muted">{{data.forecast}} in {{data.location}}</p>
+        {{!-- <p class="text-muted">{{data.forecast}} in {{data.location}}</p> --}}
+        <p class="text-muted">{{data.location}}</p>
+        <p class="text-muted">{{data.summary}}</p>
+        <p class="text-muted">{{data.lowHigh}}</p>
+        <p class="text-muted">{{data.condition}}</p>
+        <p class="text-muted">{{data.chance}}</p>
     </div>
     {{>footer}}
 </body>

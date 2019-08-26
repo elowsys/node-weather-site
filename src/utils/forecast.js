@@ -35,9 +35,18 @@ getWeatherInfo = (coords, placeName, callback) => {
             const tz = body.timezone;
             const currently = body.currently;
             const todayData = body.daily.data[0];
-            const msg = `${placeName} in ${tz}, it's ${todayData.summary} with a minimum of ${todayData.temperatureLow} and a high of ${todayData.temperatureHigh} celcius.  It is currently ${currently.temperature} degrees out. There is a ${currently.precipProbability}% chance of rain`;
+            const locationName = `${placeName} in ${tz}`;
+            const lowHigh = `Minimum of ${todayData.temperatureLow} and a high of ${todayData.temperatureHigh} celcius`;
+            const currentCondition = `It is currently ${currently.temperature}`;
+            const precipChance = `There is a ${currently.precipProbability}% chance of rain`;
+            const msg = `${placeName} in ${tz}, it's ${todayData.summary} with a minimum of ${todayData.temperatureLow} and a high of ${todayData.temperatureHigh} celcius.  ${currentCondition} degrees out. ${precipChance}`;
             callback(undefined, {
                 info: msg,
+                locationData: locationName,
+                summaryData: todayData.summary,
+                lowHighData: lowHigh,
+                currentConditionData: currentCondition,
+                precipChanceData: precipChance,
                 showStyle: showInfo
             });
             // console.log(response.body);

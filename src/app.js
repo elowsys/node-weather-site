@@ -75,6 +75,11 @@ app.get('/api/weather', (req, res) => {
         } else {
             getWeatherInfo(coords, placeName, (err, {
                 info,
+                locationData,
+                summaryData,
+                lowHighData,
+                currentConditionData,
+                precipChanceData,
                 showStyle
             }) => {
                 console.log('Getting weather forecast information...');
@@ -92,7 +97,11 @@ app.get('/api/weather', (req, res) => {
                         name: author,
                         forecastData: {
                             forecast: info,
-                            location: req.query.address
+                            summary: summaryData,
+                            lowHigh: lowHighData,
+                            condition: currentConditionData,
+                            chance: precipChanceData,
+                            location: locationData //req.query.address
                         }
                     });
                 }
@@ -124,6 +133,11 @@ app.get('/weather', (req, res) => {
         } else {
             getWeatherInfo(coords, placeName, (err, {
                 info,
+                locationData,
+                summaryData,
+                lowHighData,
+                currentConditionData,
+                precipChanceData,
                 showStyle
             }) => {
                 //console.log('Weather forecast information: ');
@@ -141,7 +155,11 @@ app.get('/weather', (req, res) => {
                         name: author,
                         data: {
                             forecast: info,
-                            location: req.query.address
+                            summary: summaryData,
+                            lowHigh: lowHighData,
+                            condition: currentConditionData,
+                            chance: precipChanceData,
+                            location: locationData //req.query.address
                         }
                     });
                 }

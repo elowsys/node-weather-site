@@ -32,7 +32,12 @@ weatherFrm.addEventListener('submit', (e) => {
                     forecastMsg.textContent = "";
                 } else {
                     console.log(data.forecastData);
-                    forecastMsg.textContent = data.forecastData.forecast;
+                    forecastMsg.textContent = data.forecastData.summary;
+                    forecastMsg.innerHTML = `<p class="text-muted"><strong>Location: </strong>${data.forecastData.location}</p>
+                    <p class="text-muted"><strong>Summary: </strong>${data.forecastData.summary}</p >
+                    <p class="text-muted"><strong>Low/High: </strong>${data.forecastData.lowHigh}</p>
+                    <p class=text-muted"><strong>Currently: </strong>${data.forecastData.condition}</p>
+                    <p class="text-muted"><strong>Rain: </strong>${data.forecastData.chance}</p>`;
                     errMsg.textContent = "";
                 }
             });
