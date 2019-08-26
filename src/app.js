@@ -80,6 +80,8 @@ app.get('/api/weather', (req, res) => {
                 lowHighData,
                 currentConditionData,
                 precipChanceData,
+                sunRiseSetData,
+                uvIndexData,
                 showStyle
             }) => {
                 console.log('Getting weather forecast information...');
@@ -101,6 +103,8 @@ app.get('/api/weather', (req, res) => {
                             lowHigh: lowHighData,
                             condition: currentConditionData,
                             chance: precipChanceData,
+                            sunRiseSet: sunRiseSetData,
+                            uvIndex: uvIndexData,
                             location: locationData //req.query.address
                         }
                     });
@@ -138,6 +142,8 @@ app.get('/weather', (req, res) => {
                 lowHighData,
                 currentConditionData,
                 precipChanceData,
+                sunRiseSetData,
+                uvIndexData,
                 showStyle
             }) => {
                 //console.log('Weather forecast information: ');
@@ -159,6 +165,8 @@ app.get('/weather', (req, res) => {
                             lowHigh: lowHighData,
                             condition: currentConditionData,
                             chance: precipChanceData,
+                            sunRiseSet: sunRiseSetData,
+                            uvIndex: uvIndexData,
                             location: locationData //req.query.address
                         }
                     });

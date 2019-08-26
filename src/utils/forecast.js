@@ -36,10 +36,15 @@ getWeatherInfo = (coords, placeName, callback) => {
             const currently = body.currently;
             const todayData = body.daily.data[0];
             const locationName = `${placeName} in ${tz}`;
-            const lowHigh = `Minimum of ${todayData.temperatureLow} and a high of ${todayData.temperatureHigh} celcius`;
+            const lowHigh = `Minimum of ${todayData.apparentTemperatureLow} and a high of ${todayData.apparentTemperatureHigh} celcius`;
             const currentCondition = `It is currently ${currently.temperature}`;
             const precipChance = `There is a ${currently.precipProbability}% chance of rain`;
+            var sunrises = new Date(todayData.sunriseTime);
+            var sunsets = new Date(todayData.sunsetTime);
+            const sunRiseSet = `Sunrise at ${sunrises.toLocaleTimeString(undefined,{hour: '2-digit', minute: '2-digit', second: '2-digit'})} and sunset at ${sunsets.toLocaleTimeString(undefined,{hour: '2-digit', minute: '2-digit', second: '2-digit'})}`;
             const msg = `${placeName} in ${tz}, it's ${todayData.summary} with a minimum of ${todayData.temperatureLow} and a high of ${todayData.temperatureHigh} celcius.  ${currentCondition} degrees out. ${precipChance}`;
+            const uvIndex = todayData.uvIndex;
+            console.log('today', todayData);
             callback(undefined, {
                 info: msg,
                 locationData: locationName,
@@ -47,10 +52,12 @@ getWeatherInfo = (coords, placeName, callback) => {
                 lowHighData: lowHigh,
                 currentConditionData: currentCondition,
                 precipChanceData: precipChance,
+                sunRiseSetData: sunRiseSet,
+                uvIndexData: uvIndex,
                 showStyle: showInfo
             });
-            // console.log(response.body);
-            //console.log(todayData);
+            console.log(sunrises);
+            console.log(sunsets);
         }
     });
 };

@@ -37,7 +37,8 @@ weatherFrm.addEventListener('submit', (e) => {
                     <p class="text-muted"><strong>Summary: </strong>${data.forecastData.summary}</p >
                     <p class="text-muted"><strong>Low/High: </strong>${data.forecastData.lowHigh}</p>
                     <p class=text-muted"><strong>Currently: </strong>${data.forecastData.condition}</p>
-                    <p class="text-muted"><strong>Rain: </strong>${data.forecastData.chance}</p>`;
+                    <p class="text-muted"><strong>Rain: </strong>${data.forecastData.chance}</p>
+                    <p class="text-muted"><strong>UV Index: </strong>${data.forecastData.uvIndex}</p>`;
                     errMsg.textContent = "";
                 }
             });
